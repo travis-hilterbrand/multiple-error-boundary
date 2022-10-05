@@ -6,12 +6,9 @@ export class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
   componentDidCatch(error, errorInfo) {
     console.error(`Unexpected exception [${this.props.name}]`, error);
+    return this.setState({ hasError: true });
   }
 
   render() {
